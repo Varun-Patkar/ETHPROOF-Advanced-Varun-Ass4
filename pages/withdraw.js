@@ -134,7 +134,7 @@ export default function Withdraw() {
 					stakeholderAddress,
 					organization.address
 				);
-				setShareholderBalance(answer.toNumber());
+				setShareholderBalance(resp.toNumber());
 			}
 		} else {
 			alert("You are not whitelisted by the organization.");
