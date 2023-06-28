@@ -22,6 +22,23 @@ In order to pass the assessment, complete the following steps:
 
 Use Testnet for testing purposes.
 
+## Assessment Requirements
+
+There are four requirements for the assessment:
+
+1. Submit your project on GitHub.
+2. You will include a README.md file in your project's GitHub repository (root folder). The README should provide a concise and clear overview of your project's purpose and functionality. This will help other developers understand the motivation behind your project and how to use it.
+3. Record a video of 5 min or less. Loom is a free online tool you could use. In the video, provide a code walk-through where you share your screen and explain the code. During the code walk-through, run your code and explain the resulting output.
+4. Make sure your video includes a demo of your code (on CLI or GUI) to show the working of it in a test environment
+
+## Functionality
+
+Your project must provide the following to be successfully completed:
+
+1. Create a smart contract wallet for every user who wants to “Create a Wallet”.
+2. Users should be able to send and receive funds through their wallet.
+3. Users should be able to view their wallet balances.
+
 ## Getting Started
 
 ### Installation & Testing
