@@ -1,32 +1,26 @@
-# Vesting Scheduler - ETHPROOF Advanced Varun Ass1
+# Smart Contract Wallet - ETHPROOF Advanced Varun Ass4
 
-This is a simple vesting scheduler app for organizations to create ERC20 tokens and for shareholders to withdraw their vested tokens
+This is a Smart Contract Wallet app which allows users to use a smart contract as their wallet instead of an EOA to send and recieve funds and view balance. This also use EIP-4337 for Account Abstraction.
 
 ## Problem Statement
 
-Using Solidity and ether.js - build a simple DApp that will allow a particular organization to create a vesting schedule for their tokens. Depending on the tokenomics model of a web3 organization, they will have various vesting schedules for different stakeholders like community, investors, pre-sale buyers, founders etc.
+With the help of Solidity, design a smart contract wallet for users using account abstraction.
 
-You can build a simple DApp which will have a front end and Solidity Smart contracts with the following functionality:
+You can build a simple wallet which would create a smart contract wallet (not an EOA) at the backend and perform simple wallet operations like transfer of crypto from one wallet to another, fetching the wallet balances etc.
 
-1. An organization should be able to register themselves and their token (basically spinning off a contract for one ERC20 token).
-2. Organisation should be able to mention the type of stakeholder and their vesting period (timelock).
-3. Org should be able to whitelist addresses for certain stakeholders (founders, investors etc.).
-4. Whitelisted addresses should be able to claim their tokens after the vesting period.
+Here are some suggested features for the smart contract wallet, however you can add a few extra features of your own, to get bonus points:
+
+1. Create a smart contract wallet for every user who wants to “Create a Wallet”.
+2. Users should be able to send and receive funds through their wallet.
+3. Users should be able to view their wallet balances.
 
 In order to pass the assessment, complete the following steps:
 
-1. Create Solidity contracts for registering orgs and adding stakeholders for each.
-2. Create a front end page for users to connect their wallet.
-3. Create a front end page for admins to register their org and add stakeholders + vesting details.
-4. Create a page for users to be able to withdraw if they are whitelisted otherwise only org admin should be able to withdraw.
-   You are recommended to use Testnet for testing purposes.
+1. Create Solidity contracts for creating smart contract wallets.
+2. Use the reference of EIP-4337 to create new structs that facilitate user operations with this wallet.
+3. Create a small front-end page where we can see the balance of a user/address.
 
-There are four requirements for the assessment:
-
-1. Submit your project on GitHub.
-2. You will include a README.md file in your project's GitHub repository (root folder). The README should provide a concise and clear overview of your project's purpose and functionality. This will help other developers understand the motivation behind your project and how to use it.
-3. Record a video of 5 min or less. Loom is a free online tool you could use. In the video, provide a code walk-through where you share your screen and explain the code. During the code walk-through, run your code and explain the resulting output.
-4. Make sure your video includes a demo of your code (on CLI or GUI) to show the working of it in a test environment
+Use Testnet for testing purposes.
 
 ## Getting Started
 
@@ -35,7 +29,7 @@ There are four requirements for the assessment:
 - Clone the repository on your local machine
 
 ```
-git clone https://github.com/Varun-Patkar/ETHPROOF-Advanced-Varun-Ass1.git
+git clone https://github.com/Varun-Patkar/ETHPROOF-Advanced-Varun-Ass4.git
 ```
 
 - Install all node dependencies
