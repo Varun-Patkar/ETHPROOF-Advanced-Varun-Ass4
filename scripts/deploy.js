@@ -7,12 +7,28 @@
 const hre = require("hardhat");
 
 async function main() {
-	const Vesting = await hre.ethers.getContractFactory("Vesting");
-	const vesting = await Vesting.deploy();
+	const EntryPoint = await hre.ethers.getContractFactory("EntryPoint");
+	const entryPoint = await EntryPoint.deploy({ gasLimit: 6e6 });
 
-	await vesting.deployed();
+	await entryPoint.deployed();
 
-	console.log(`Contract deployed to ${vesting.address}`);
+	console.log(`Entry Point deployed to ${entryPoint.address}`);
+
+	const SimpleAccountFactory = await hre.ethers.getContractFactory(
+		"SimpleAccountFactory"
+	);
+	const simpleAccountFactory = await SimpleAccountFactory.deploy(
+		entryPoint.address,
+		{
+			gasLimit: 6e6,
+		}
+	);
+
+	await simpleAccountFactory.deployed();
+
+	console.log(
+		`Simple Account Factory deployed to ${simpleAccountFactory.address}`
+	);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

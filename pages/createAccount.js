@@ -1,3 +1,6 @@
+// import required modules
+// the essential modules to interact with frontend are below imported.
+// ethers is the core module that makes RPC calls using any wallet provider like Metamask which is esssential to interact with Smart Contract
 import { ethers } from "ethers";
 // A single Web3 / Ethereum provider solution for all Wallets
 import Web3Modal from "web3modal";
@@ -8,14 +11,16 @@ import { useEffect, useState } from "react";
 import contractABI from "../artifacts/contracts/SimpleAccountFactory.sol/SimpleAccountFactory.json";
 import { useRouter } from "next/router";
 
-const Home = () => {
+export default function CreateAccount() {
 	const router = useRouter();
-
+	// env variables are initalised
+	// contractAddress is deployed smart contract addressed
 	const contractAddress = process.env.ACCOUNT_FACTORY_ADDRESS;
+	const [err, setErr] = useState();
+	// application binary interface is something that defines structure of smart contract deployed.
 	const abi = contractABI.abi;
-	const [account, setAccount] = useState();
-	const [balance, setBalance] = useState();
 	const [provider, setProvider] = useState();
+
 	async function initWallet() {
 		try {
 			// check if any wallet provider is installed. i.e metamask xdcpay etc
@@ -46,16 +51,18 @@ const Home = () => {
 					provider
 				);
 				const contractWithSigner = smartContract.connect(signer);
-				const response = await contractWithSigner.getAccAddress(addr);
-				if (response != "0x0000000000000000000000000000000000000000") {
-					setAccount(response);
-					const response1 = await contractWithSigner.getBalance(addr);
-					setBalance(response1?.toString());
-				}
+				const tx = await contractWithSigner.createAccount(
+					addr,
+					providerVar.getTransactionCount(contractAddress)
+				);
+				const response = await tx.wait();
+				console.log(await response);
+				router.push("/");
 				return;
 			}
 		} catch (error) {
 			console.log(error);
+			setErr(error);
 			return;
 		}
 	}
@@ -65,42 +72,13 @@ const Home = () => {
 	}, []);
 	return (
 		<>
-			<h1 className="text-blue-700 text-5xl font-bold text-center m-40">
-				<a href="/">Smart Contract Wallet</a>
-			</h1>
-			{account ? (
-				<>
-					<h1 className="text-blue-700 text-4xl font-bold text-center m-10">
-						<span>Account Address: {account}</span>
-					</h1>
-					<h1 className="text-blue-700 text-4xl font-bold text-center m-10">
-						<span>
-							Balance: {balance && ethers.utils.formatEther(balance)} ETH
-						</span>
-					</h1>
-					<button
-						className="flex bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full text-xl font-bold text-center justify-center w-2/12 mx-auto mb-10"
-						onClick={() => router.push("/addFunds")}
-					>
-						Add Funds
-					</button>
-					<button
-						className="flex bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full text-xl font-bold text-center justify-center w-2/12 mx-auto"
-						onClick={() => router.push("/sendFunds")}
-					>
-						Send Funds
-					</button>
-				</>
+			{err ? (
+				<h1 className="text-red-700 text-5xl font-bold text-center m-4">
+					{err.message}
+				</h1>
 			) : (
-				<button
-					className="flex bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full text-xl font-bold text-center justify-center w-2/12 mx-auto"
-					onClick={() => router.push("/createAccount")}
-				>
-					Create Account
-				</button>
+				<></>
 			)}
 		</>
 	);
-};
-
-export default Home;
+}
