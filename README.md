@@ -80,6 +80,7 @@ npm run dev
 ## Help
 
 - You may get the error 'Nonce too high'. This can be readily fixed by going to Metamask (or your other wallet) and clearing activity and nonce data.
+- When creating account, 2 transactions will be shown. Please accept the first one and close the dialog box of second. This is because of useEffect() function problem which renders twice when in development and only once in production.
 
 ## Authors
 
