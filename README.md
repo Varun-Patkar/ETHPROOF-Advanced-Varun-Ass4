@@ -2,6 +2,10 @@
 
 This is a Smart Contract Wallet app which allows users to use a smart contract as their wallet instead of an EOA to send and recieve funds and view balance. This also use EIP-4337 for Account Abstraction.
 
+## Companion Video
+
+[Loom Companion Video](https://www.loom.com/share/29003158ce56474eabfb30bfe17240f6?sid=c5166f5a-8b4c-47bf-8ed3-51aac104c4eb)
+
 ## Problem Statement
 
 With the help of Solidity, design a smart contract wallet for users using account abstraction.

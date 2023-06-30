@@ -137,7 +137,7 @@ export default function SendFunds() {
 								Balance: {balance && ethers.utils.formatEther(balance)} ETH
 							</span>
 						</h1>
-						<form class="w-full" method="post">
+						<form class="w-6/12" method="post">
 							<div class="flex flex-wrap -mx-3 mb-6">
 								<div class="w-full md:w-1/2 px-3">
 									<label
